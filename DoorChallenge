@@ -40,7 +40,7 @@ for (let i = 2; i <= 75; i++) {
     open.sort((a,b) => a-b)
     closed.sort((a,b) => a-b)
     console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-    console.log("TEST: " + i)
+    console.log("TRADER: " + i)
     console.log("OPEN: ",open)
     console.log("CLOSED",closed)
 }
