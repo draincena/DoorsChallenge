@@ -1,0 +1,46 @@
+let open = []
+let closed = []
+let toOpen = []
+let toClose = []
+
+for (let i = 1; i <= 75; i++) {
+    open.push(i)
+}
+
+for (let i = 2; i <= 75; i++) {
+    for (let j = i; j <= 75; j+=i) {
+        if (!open[j]) {
+            break
+        }
+        toClose.push(open[j-1])
+    }
+
+    for (let h = i; h <= 75; h+=i) {
+        if (!closed[h]) {
+            break
+        }
+        toOpen.push(closed[h-1])
+    }
+    for (let p = i; p <= 75; p+=(i-1)) {
+        if (p > open.length) {
+            break
+        }
+        open.splice(p-1, 1)
+    }
+    for (let p = i; p <= 75; p+=(i-1)) {
+        if (p > closed.length) {
+            break
+        }
+        closed.splice(p-1, 1)
+    }
+    open = open.concat(toOpen)
+    closed = closed.concat(toClose)
+    toOpen=[]
+    toClose=[]
+    open.sort((a,b) => a-b)
+    closed.sort((a,b) => a-b)
+    console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+    console.log("TEST: " + i)
+    console.log("OPEN: ",open)
+    console.log("CLOSED",closed)
+}
